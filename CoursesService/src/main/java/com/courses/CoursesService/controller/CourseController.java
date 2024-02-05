@@ -28,6 +28,11 @@ public class CourseController {
         return new ResponseEntity<>(course,HttpStatus.OK);
     }
 
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<List<Course>> getCourseByStudentId(@PathVariable int studentId){
+        List<Course> courses= this.courseService.getAllCoursesByStudentId(studentId);
+        return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
     @GetMapping("")
     public ResponseEntity<List<Course>> getCourses(){
         List<Course> courses=this.courseService.getAllCourses();
